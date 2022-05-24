@@ -1,7 +1,7 @@
 <template>
   <section>
       <ul>
-          <AppCard />
+          <AppCard v-for="item in movies" :key="item.id" :movie="item"/>
       </ul>
   </section>
 </template>
@@ -12,6 +12,9 @@ export default {
     name: "AppMain",
     components: {
         AppCard
+    },
+    props: {
+        movies: Array
     }
 }
 </script>

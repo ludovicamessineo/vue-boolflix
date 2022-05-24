@@ -1,7 +1,7 @@
 <template>
   <div id="app">
    <AppHeader @startSearch="search"/>
-   <AppMain />
+   <AppMain :movies="movieList" />
   </div>
 </template>
 
@@ -16,11 +16,16 @@ export default {
     AppHeader,
     AppMain
   },
+  data() {
+    return {
+      movieList: []
+    }
+  },
   methods: {
     search(searchMovie) {
       axios.get("https://api.themoviedb.org/3/search/movie?api_key=3497e14d9b438ed1a006312caa811e29&query=" + searchMovie)
       .then(resp => {
-        console.log(resp);
+        this.movieList = resp.data.results
       })
     }
   }
