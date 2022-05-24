@@ -1,13 +1,18 @@
 <template>
   <div class="header">
-    <input type="text" placeholder="Inserisci un titolo">
-    <button>Cerca</button>
+    <input type="text" placeholder="Inserisci un titolo" v-model="searchMovie">
+    <button @click="$emit('startSearch', searchMovie)">Cerca</button>
   </div>
 </template>
 
 <script>
 export default {
-
+    name: "AppHeader",
+    data() {
+        return {
+            searchMovie: ""
+        }
+    }
 }
 </script>
 
