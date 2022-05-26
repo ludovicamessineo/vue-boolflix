@@ -1,12 +1,12 @@
 <template>
   <section>
       <div class="container">
-        <h1>Film</h1>  
+        <h2>Film</h2>  
         <ul class="show-wrapper">
             <AppCard v-for="item in movies" :key="item.id" :showObj="item"/>
         </ul>
 
-        <h1>Serie Tv</h1>
+        <h2>Serie Tv</h2>
         <ul class="show-wrapper">
             <AppCard v-for="item in series" :key="item.id" :showObj="item"/>
         </ul>
@@ -33,5 +33,10 @@ export default {
 .show-wrapper {
     display: flex;
     flex-wrap: wrap;
+}
+
+h2 {
+    margin: 1rem;
+    font-size: 2rem;
 }
 </style>

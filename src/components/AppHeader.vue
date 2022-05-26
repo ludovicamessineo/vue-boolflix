@@ -1,7 +1,12 @@
 <template>
   <div class="header">
-    <input type="text" placeholder="Inserisci un titolo" v-model="searchMovie">
-    <button @click="$emit('startSearch', searchMovie)">Cerca</button>
+    <div class="header-logo">
+        <img :src="require('../assets/logo.png')" alt="">
+    </div>  
+    <div class="header-text">
+        <input type="text" placeholder="Inserisci un titolo" v-model="searchMovie">
+        <button @click="$emit('startSearch', searchMovie)">Cerca</button>
+    </div>  
   </div>
 </template>
 
@@ -21,18 +26,24 @@ export default {
      height: 80px;
      background-color: #141414;
      display: flex;
-     justify-content: flex-end;
+     justify-content: space-between;
      align-items: center;
-     padding-right: 2rem;
+     padding: 2rem;
 
-     input {
-         width: 15%;
-         padding: .2rem;
-     }
+    .header-text {
+        input {
+            padding: .2rem;
+        }
+   
+        button {
+            padding: .2rem .5rem;
+            margin-left: .2rem;
+        }
 
-     button {
-         padding: .2rem .5rem;
-         margin-left: .2rem;
-     }
+    }
+
+    .header-logo > img {
+        width: 80%;
+    }
  }
 </style>
