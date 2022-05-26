@@ -1,8 +1,16 @@
 <template>
   <section>
-      <ul>
-          <AppCard v-for="item in movies" :key="item.id" :movie="item"/>
-      </ul>
+      <div class="container">
+        <h1>Film</h1>  
+        <ul class="show-wrapper">
+            <AppCard v-for="item in movies" :key="item.id" :showObj="item"/>
+        </ul>
+
+        <h1>Serie Tv</h1>
+        <ul class="show-wrapper">
+            <AppCard v-for="item in series" :key="item.id" :showObj="item"/>
+        </ul>
+      </div>
   </section>
 </template>
 
@@ -14,11 +22,16 @@ export default {
         AppCard
     },
     props: {
-        movies: Array
+        movies: Array,
+        series: Array
     }
 }
 </script>
 
 <style lang="scss" scoped>
 
+.show-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
 </style>

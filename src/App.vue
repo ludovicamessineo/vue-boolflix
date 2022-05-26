@@ -1,7 +1,7 @@
 <template>
   <div id="app">
    <AppHeader @startSearch="search"/>
-   <AppMain :movies="movieList" />
+   <AppMain :movies="movieList" :series="tvShowList" />
   </div>
 </template>
 
@@ -18,16 +18,21 @@ export default {
   },
   data() {
     return {
-      movieList: []
+      movieList: [],
+      tvShowList: []
     }
   },
   methods: {
-    search(searchMovie) {
-      axios.get("https://api.themoviedb.org/3/search/movie?api_key=3497e14d9b438ed1a006312caa811e29&query=" + searchMovie)
+    search(searchShow) {
+      axios.get("https://api.themoviedb.org/3/search/movie?api_key=3497e14d9b438ed1a006312caa811e29&query=" + searchShow)
       .then(resp => {
         this.movieList = resp.data.results
       })
-    }
+      axios.get("https://api.themoviedb.org/3/search/tv?api_key=3497e14d9b438ed1a006312caa811e29&query=" + searchShow)
+      .then(resp => {
+        this.tvShowList = resp.data.results
+      })
+    },
   }
 }
 </script>
